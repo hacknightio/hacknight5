@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 app.use(express.json())
+
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
@@ -9,7 +10,9 @@ app.get('/', function (req, res) {
 app.post('/misty/api/drive', function (req, res) {
   const { LinearVelocity, AngularVelocity } = req.body
   if (LinearVelocity && AngularVelocity){
-    res.send(true)
+    if (typeof(LinearVelocity) === Number && typeof(AngularVelocity) === Number){
+      res.send(true)
+    }
   }
   else {
     res.send(false)

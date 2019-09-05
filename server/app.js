@@ -10,11 +10,14 @@ app.get('/', function (req, res) {
 app.post('/misty/api/drive', function (req, res) {
   const { LinearVelocity, AngularVelocity } = req.body
   if (LinearVelocity && AngularVelocity){
-    if (typeof(LinearVelocity) === Number && typeof(AngularVelocity) === Number){
+    if (typeof(LinearVelocity) === 'number' && typeof(AngularVelocity) === 'number'){
       res.send(true)
     }
+    else {
+      res.send(false)
+    }
   }
-  else {
+  else{
     res.send(false)
   }
 })

@@ -103,7 +103,14 @@ app.post('/misty/api/drive/stop', function(req, res) {
   // No parameters and return value
 })
 
-app.listen(3000)
+const server = app.listen(3000)
+
+const io = require('socket.io')(server)
+
+io.on('connection', function (socket) {
+  console.log(socket.id)
+  io.emit('MESSAGE', {id: 'jake'})
+});
 
 function validTypes(Args, type) {
   return Args.reduce(

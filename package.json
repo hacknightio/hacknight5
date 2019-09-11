@@ -1,0 +1,28 @@
+{
+  "name": "hacknight5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "forward.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "localtunnel": "^1.9.2",
+    "ngrok": "3.2.5",
+    "redbird": "0.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hacknightio/hacknight5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hacknightio/hacknight5/issues"
+  },
+  "homepage": "https://github.com/hacknightio/hacknight5#readme"
+}

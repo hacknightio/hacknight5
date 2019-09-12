@@ -27,7 +27,7 @@ httpMethods.forEach(httpMethod => {
 })
 
 function validateRequest(req, command, expectedMethod) {
-  const { method, body = {} } = req
+  const { method, body = {}, query = {} } = req
   const { name, arguments = {}, resultType, apiCommandGroup } = _.get(
     command,
     'apiCommand',
@@ -40,33 +40,37 @@ function validateRequest(req, command, expectedMethod) {
     errors.push(`Expected HTTP method ${expectedMethod} for command ${name}`)
   }
 
-  const args = {}
-  Object.keys(arguments).forEach(key => {
-    const param = key // TODO is the argument the key, or the name?!
-    let provided = body[param]
-    const original = provided
-    const { name, defaultValue, type, parse, validate } = parseArgument(
-      arguments[key]
-    )
-    let parsed
-    if (provided === undefined || provided === null) {
-      // do we need to validate required?
-      // provided = new String(defaultValue)
-      provided = defaultValue
-    }
-
-    if (!validate(provided)) {
-      const msg = `Expected type=${type} for parameter=${param} but received=${original}`
-      return errors.push(msg)
-    } else {
-      parsed = parse(provided)
-      if (!validate(parsed)) {
-        const msg = `Expected type=${type} for parameter=${param} but received=${original} and parsed=${parsed}`
-        return errors.push(msg)
+  let args = {}
+  if( method === 'GET' ){
+    args = query
+  } else {
+    Object.keys(arguments).forEach(key => {
+      const param = key // TODO is the argument the key, or the name?!
+      let provided = body[param]
+      const original = provided
+      const { name, defaultValue, type, parse, validate } = parseArgument(
+        arguments[key]
+      )
+      let parsed
+      if (provided === undefined || provided === null) {
+        // do we need to validate required?
+        // provided = new String(defaultValue)
+        provided = defaultValue
       }
-    }
-    args[param] = parsed
-  })
+
+      if (!validate(provided)) {
+        const msg = `Expected type=${type} for parameter=${param} but received=${original}`
+        return errors.push(msg)
+      } else {
+        parsed = parse(provided)
+        if (!validate(parsed)) {
+          const msg = `Expected type=${type} for parameter=${param} but received=${original} and parsed=${parsed}`
+          return errors.push(msg)
+        }
+      }
+      args[param] = parsed
+    })
+  }
 
   return { errors, args }
 }
@@ -90,7 +94,7 @@ function parseArgument(arg, property) {
 }
 
 const curryValidate = (instanceOf, typeOf, validate) => raw => {
-  // console.log({raw, instanceOf, typeOf})
+  console.log({raw, instanceOf, typeOf})
   return raw instanceof instanceOf || typeof raw === typeOf || validate(raw)
 }
   

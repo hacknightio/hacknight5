@@ -6,6 +6,14 @@ const defaultState = {
     angularVelocity: 0,
     timeoutId: null,
     degree: 0
+  },
+  arms: {
+    left: {
+      position: 0
+    },
+    right: {
+      position: 0
+    }
   }
 }
 

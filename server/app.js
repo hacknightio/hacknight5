@@ -1,20 +1,55 @@
 const express = require('express')
-const app = express()
+
 const { router, bus } = require('./bus')
 
+// the state of our misty robot!
+const state = {}
+
+const app = express()
 app.use(express.json())
 app.use(router)
 
-bus.on('get', e => {
-  const { res, command, httpMethod } = e
-  res.send({
+bus.on('request', e => {
+  const { res, command, httpMethod, args } = e
+
+  const { name, apiCommandGroup: group } = command.apiCommand
+
+  const ctx = {
+    name,
+    group,
     httpMethod,
+    args,
     fields: command.apiCommand.arguments
+  }
+
+  try {
+    const file = `./commands/${group}/${name}`
+    // console.log({ file })
+    const fn = require(file)
+    fn({ state, busEvent: e, io })
+  } catch (err) {
+    // no implementation found, default
+    res.send({
+      status: 'ok',
+      __mock: true,
+      __default: true,
+      __ctx: ctx
+    })
+  }
+})
+
+bus.on('validation-failed', e => {
+  const { res, errors } = e
+  const message = 'Invalid payload submitted'
+  // TODO include command info?
+  res.status(400).json({
+    message,
+    errors
   })
 })
 
 app.get('/', function(req, res) {
-  res.send('Hello World')
+  e.res.send('Hello World')
 })
 
 // Drive

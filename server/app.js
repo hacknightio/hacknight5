@@ -1,7 +1,7 @@
 const express = require('express')
 const SocketIO = require('socket.io')
 
-const { dispatcher } = require('./commands/dispatch')
+const dispatcher = require('./commands/dispatch')
 const { router, bus } = require('./bus')
 
 // the state of our misty robot!
@@ -10,7 +10,7 @@ const state = {}
 // Wire up our express app
 const app = express()
 app.use(express.json())
-app.use(router)
+app.use('/api', router)
 app.get('/', function(req, res) {
   res.send('Hello World')
 })
@@ -28,4 +28,4 @@ io.on('connection', function(socket) {
   io.emit('MESSAGE', { id: 'jake' })
 })
 
-dispatcher({ io, bus, state })
+dispatcher.bind({ io, bus, state })

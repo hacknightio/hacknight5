@@ -1,11 +1,13 @@
 module.exports = ({ state, busEvent, io }) => {
   const { req, res } = busEvent
-  const { body: { on } } = req
+  const { body: { red, green, blue } } = req
 
   io.emit('MESSAGE', { emitting: true })
-  console.log({ on })
+  console.log({ red, green, blue })
   res.send({
-    on,
+    red,
+    green,
+    blue,
     state
   })
 }

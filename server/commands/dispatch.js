@@ -1,3 +1,6 @@
+const _ = require('lodash')
+const timers = require('../utils/timers')
+
 const bind = ctx => {
   const { bus } = ctx
   bus.on('request', e => handleRequest(e, ctx))
@@ -17,6 +20,7 @@ function handleRequest(e, ctx) {
     fn = require(file)
   } catch (err) {
     // no implementation found, default
+    console.log('didnt find', file)
     return res.send({
       status: 'ok',
       __mock: true,
@@ -33,7 +37,16 @@ function handleRequest(e, ctx) {
 
   // must have a function by now, so run it!
   try {
-    fn({ state, busEvent: e, io })
+    const context = {
+      state,
+      busEvent: e,
+      io,
+      _,
+      helpers: {
+        timers
+      }
+    }
+    fn(context)
   } catch (err) {
     console.warn('Failed executing command file: ' + file, err)
     e.res.status(500).send({

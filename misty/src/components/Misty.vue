@@ -6,25 +6,28 @@
 import io from 'socket.io-client';
 
 export default {
-  data() {
-        return {
-            user: '',
-            message: '',
-            messages: [],
-            socket : io('http://localhost:3000/')
-        }
-    },
-  mounted() {
-    console.log('MOUNTED IN HERE')
+  data () {
+    return {
+      user: '',
+      message: '',
+      messages: [],
+      socket: io('http://localhost:3000/')
+    }
+  },
+  mounted () {
     this.socket.on('MESSAGE', (data) => {
-      console.log('got a message back!!!', data)
-            this.messages = [...this.messages, data];
-            // you can also do this.messages.push(data)
-        });
+      if (typeof data === 'object') {
+        console.log('Data received \n' + JSON.stringify(data, null, 4), data)
+      } else {
+        console.log('Non-object Data received', data)
+      }
+
+      this.messages = [...this.messages, data];
+      // you can also do this.messages.push(data)
+    });
   }
 }
 </script>
 
 <style scoped>
-
 </style>

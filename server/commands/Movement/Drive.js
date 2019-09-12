@@ -1,12 +1,18 @@
 module.exports = ctx => {
   const {
+    _,
     bus,
     io,
-    args,
-    busEvent: { req, res }
+    state,
+    busEvent: { req, res, args }
   } = ctx
 
-  console.log({ args })
+  state.drive = {
+    linearVelocity: 0,
+    angularVelocity: 0,
+    ...state.drive,
+    ..._.pick(args, 'linearVelocity,angularVelocity')
+  }
 
   res.send({ message: 'ok' })
 }

@@ -5,7 +5,7 @@ const dispatcher = require('./commands/dispatch')
 const { router, bus } = require('./bus')
 
 // the state of our misty robot!
-const state = {}
+const { state, defaultState } = require('./misty-state')
 
 // Wire up our express app
 const app = express()
@@ -28,4 +28,10 @@ io.on('connection', function(socket) {
   io.emit('MESSAGE', { id: 'jake' })
 })
 
-dispatcher.bind({ io, bus, state })
+dispatcher.bind({ io, bus, state, defaults: defaultState })
+state.on('change', s => {
+  io.emit('MESSAGE', {
+    event: 'change',
+    state: s
+  })
+})

@@ -24,8 +24,8 @@ const server = app.listen(port, () => {
 // Websocket our emulator up!
 const io = SocketIO(server)
 io.on('connection', function(socket) {
-  console.log('Websocket connection', socket.id)
-  io.emit('MESSAGE', { id: 'jake' })
+  // console.log('Websocket connection', socket.id)
+  io.emit('MESSAGE', { event: 'change', state })
 })
 
 dispatcher.bind({ io, bus, state, defaults: defaultState })

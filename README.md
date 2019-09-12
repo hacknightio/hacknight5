@@ -51,6 +51,7 @@ Some important things to note:
   - If you update the `misty-state` object, the updated object will be sent over the websocket automagically.
   - When the state comes to Vue, it's automatically bound for the UI to update
   - This means, hopefully, any dev can be isolated to `<command>.js` and `misty-state.js`
+  - Because you have the websocket open to any clients *separate from the rest API request*, you can (and should) send the Rest API response ASAP while updating Misty's state afterwards via a timeout / interval / loop / carrier pidgeon
 
 
 # Getting Started

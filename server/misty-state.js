@@ -7,7 +7,14 @@ const defaultState = {
     timeoutId: null,
     degree: 0
   },
+  head: {
+    pitch: 0,
+    roll: 0,
+    yaw: 0,
+    timeoutId: null
+  },
   arms: {
+    timeoutId: null,
     left: {
       position: 0
     },

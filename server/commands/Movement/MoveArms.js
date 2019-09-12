@@ -12,9 +12,9 @@ module.exports = ctx => {
 
   const { leftArmPosition, rightArmPosition } = args
 
-  let itr = 0
-  let timerId
-  timerId = timers.interval(() => {
+  // let itr = 0
+  let timeoutId
+  timeoutId = timers.interval(() => {
     // console.log({ args, current: state.arms })
 
     const left = normalize(state.arms.left.position, leftArmPosition)
@@ -27,17 +27,18 @@ module.exports = ctx => {
     const cr = state.arms.right
 
     // console.log({ nl, nr, cr, cl, left, right })
+    if (left === 0 && right === 0) {
+      timers.clear(timeoutId)
+      timeoutId = null
+    }
     state.arms = {
       ...state.arms,
+      timeoutId,
       left: left === 0 ? cl : { ...cl, position: nl },
       right: right === 0 ? cr : { ...cr, position: nr }
     }
 
     // console.log('set', itr++)
-
-    if (left === 0 && right === 0) {
-      timers.clear(timerId)
-    }
   }, 50)
   // TODO stop head and arm motors too
 

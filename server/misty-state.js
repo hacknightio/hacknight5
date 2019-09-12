@@ -3,10 +3,24 @@ const EventEmitter = require('events')
 const defaultState = {
   drive: {
     linearVelocity: 0,
-    angularVelocity: 0
+    angularVelocity: 0,
+    timeoutId: null,
+    degree: 0
   }
 }
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *  SPACE
+ *
+ *
+ *
+ */
 const onChange = (object, onChange) => {
   const handler = {
     get(target, property, receiver) {

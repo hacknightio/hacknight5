@@ -14,7 +14,5 @@ module.exports = ctx => {
     ..._.pick(args, 'linearVelocity,angularVelocity')
   }
 
-  
-
   res.send({ message: 'ok' })
 }

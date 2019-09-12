@@ -1,8 +1,6 @@
 module.exports = ctx => {
   const {
     _,
-    bus,
-    io,
     state,
     busEvent: { req, res, args }
   } = ctx

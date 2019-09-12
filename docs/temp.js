@@ -1,4 +1,4 @@
-module.exports = {
+const data = {
 	"result": {
 		"get": [{
 			"apiCommand": {
@@ -1846,3 +1846,42 @@ module.exports = {
 	},
 	"status": "Success"
 }
+
+var categories = {
+	"Assets": ["DeleteAudioAssetFromRobot", "DeleteImageAssetFromRobot", "GetAudioFile", "GetImage", "GetListOfAudioFiles", "GetListOfImages", "SaveAudioAssetToRobot", "SaveImageAssetToRobot"],
+
+	"Backpack": ["GetSerialSensorValues", "MessageStreamWrite"],
+
+	"Events": ["GetWebsocketHelp", "GetWebsocketVersion", "SetWebsocketVersion"],
+
+	"Expression": ["ChangeDisplayImage", "ChangeLED", "ClearDisplayText", "PlayAudioClip", "SetFlashlight", "SetBlinking"],
+
+	"Movement": ["Drive", "DriveTime", "DriveToLocation", "Halt", "LocomotionTrack", "MoveArm", "MoveArms", "MoveHead", "Stop", /*"LookAtObject", "LookAt", "PointAtObject", "PointAt"*/],
+
+	"Navigation": ["FollowPath", "SlamGetDepthImage", "SlamGetMap", "SlamGetSensorSerialNumber", "SlamGetPath", "SlamGetVisibleImage", "SlamGetStatus", "SlamReset", "SlamStartMapping", "SlamStartStreaming", "SlamStartTracking", "SlamStopMapping", "SlamStopStreaming", "SlamStopTracking"],
+
+	"Perception": ["CancelFaceTraining", "ClearLearnedFaces", "GetLearnedFaces", "GetVideoFile", "StartFaceDetection", "StartFaceRecognition", "StartFaceTraining", "StopFaceDetection", "StopFaceRecognition", "StartRecordingAudio", "StartRecordingVideo", /*"StartRecordingAudioRaw",*/ "StopRecordingAudio",  "StopRecordingVideo", "TakePicture"],
+
+	"Requests": ["SendExternalRequest"],
+
+	"Skills": ["CancelSkill", "DeleteSkill", "GetSkills", "GetRunningSkills", "RunSkill", "SaveSkillFiles", "TriggerSkillEvent" ],
+
+	"System": ["ConnectToSavedWifi", "ForgetWifi", "GetAvailableWifiNetworks", "GetBatteryLevel", "GetCameraData", "GetDeviceInformation", "GetHelp", "GetLogFile", /*"GetLogLevel",*/ "GetSavedWifiNetworks", "GetStoreUpdateAvailable", "GetWebsocketVersion", "PerformSystemUpdate", "PerformTargetedUpdate", "RestartRobot", "SetDefaultVolume", /* "SetLogLevel",*/  "SetNetworkConnection"/*, "SetWebsocketVersion" */]
+};
+
+var categoryNames = ["Assets", "Backpack", "Events", "Expression", "Movement", "Navigation", "Perception", "Requests", "Skills", "System"];
+
+Object.keys(data.result).forEach(method => {
+	const mt = data.result[method]
+	Object.keys(mt).forEach(cname => {
+		const command = mt[cname]
+		Object.keys(categories).forEach(category => {
+			const members = categories[category]			
+			if( members.indexOf(command.apiCommand.id) >= 0 ){
+				command.apiCommand.webCategory = category 
+			}
+		})
+	})
+})
+
+module.exports = data

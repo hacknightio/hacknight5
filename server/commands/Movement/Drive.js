@@ -1,5 +1,10 @@
-const bind = ctx => {
-  const { bus, io, args, res } = ctx
+module.exports = ctx => {
+  const {
+    bus,
+    io,
+    args,
+    busEvent: { req, res }
+  } = ctx
 
   console.log({ args })
 

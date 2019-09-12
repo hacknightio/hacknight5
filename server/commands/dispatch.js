@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const bind = ctx => {
   const { bus } = ctx
   bus.on('request', e => handleRequest(e, ctx))
@@ -33,7 +35,7 @@ function handleRequest(e, ctx) {
 
   // must have a function by now, so run it!
   try {
-    fn({ state, busEvent: e, io })
+    fn({ state, busEvent: e, io, _ })
   } catch (err) {
     console.warn('Failed executing command file: ' + file, err)
     e.res.status(500).send({

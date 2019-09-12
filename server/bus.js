@@ -15,7 +15,8 @@ httpMethods.forEach(httpMethod => {
     router[httpMethod](`/${command.endpoint}`, (req, res) => {
       const { args, errors } = validateRequest(req, command, httpMethod)
       const payload = { httpMethod, args, command, req, res }
-      if (errors.length) {
+
+      if (errors.length > 0) {
         payload.errors = errors
         bus.emit('validation-failed', payload)
       } else {
@@ -88,6 +89,9 @@ function parseArgument(arg, property) {
   }
 }
 
+const curryValidate = (instanceOf, typeOf, validate) => raw =>
+  raw instanceof instanceOf || typeof raw === typeOf || validate(raw)
+
 // ewww but works for now
 function convertDotNetType(type) {
   const noop = raw => raw
@@ -106,23 +110,20 @@ function convertDotNetType(type) {
       return {
         type: 'int',
         parse: parseInt,
-        validate: validator.isInt
+        validate: curryValidate(Number, 'number', validator.isInt)
       }
     case 'double':
       return {
         type: 'double',
         parse: parseFloat,
-        validate: validator.isFloat
+        validate: curryValidate(Number, 'number', validator.isFloat)
       }
     case 'boolean':
       return {
         type: 'boolean',
         parse: raw => new Boolean(raw),
         // this one was stupid. hopefully not the others too
-        validate: raw =>
-          raw instanceof Boolean ||
-          typeof raw === 'boolean' ||
-          validator.isBoolean(raw)
+        validate: curryValidate(Boolean, 'boolean', validator.isBoolean)
       }
     case 'string':
       return {

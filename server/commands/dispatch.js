@@ -1,11 +1,11 @@
-const dispatcher = ctx => {
+const bind = ctx => {
   const { bus } = ctx
   bus.on('request', e => handleRequest(e, ctx))
-  bus.on('validation-failed', e => handleRequest(e, ctx))
+  bus.on('validation-failed', e => handleValidationError(e, ctx))
 }
 
 function handleRequest(e, ctx) {
-  const { bus, io, state } = ctx
+  const { io, state } = ctx
   const { res, command, httpMethod, args } = e
 
   const { name, apiCommandGroup: group } = command.apiCommand
@@ -53,7 +53,7 @@ function handleValidationError(e, ctx) {
 }
 
 module.exports = {
-  dispatcher,
+  bind,
   handleRequest,
   handleValidationError
 }

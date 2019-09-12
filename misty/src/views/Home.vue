@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img class="picture" alt="Vue logo" src="../assets/main.png" />
-    <Misty />
+    <Misty :mistyState="{}"/>
   </div>
 </template>
 

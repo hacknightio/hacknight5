@@ -1,11 +1,30 @@
 <template>
-  <h3>WELCOME TO MISTY</h3>
+  <div>
+    <h3>WELCOME TO MISTY</h3>
+    <RightArm :position="mistyState.rightArm"/>
+    <LeftArm :position="mistyState.leftArm"/>
+  </div>
 </template>
 
 <script>
-import io from 'socket.io-client';
+import io from 'socket.io-client'
+import RightArm from '@/components/RightArm.vue'
+import LeftArm from '@/components/LeftArm.vue'
 
 export default {
+  components: {
+    RightArm,
+    LeftArm
+  },
+  props: {
+    mistyState: {
+      type: Object,
+      default: {
+        leftArm: 0,
+        rightArm: 0
+      }
+    }
+  },
   data() {
         return {
             user: '',
@@ -24,7 +43,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

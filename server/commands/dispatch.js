@@ -8,7 +8,7 @@ function handleRequest(e, ctx) {
   const { io, state } = ctx
   const { res, command, httpMethod, args } = e
 
-  const { name, apiCommandGroup: group } = command.apiCommand
+  const { name, webCategory: group } = command.apiCommand
   const file = `./${group}/${name}`
 
   let fn
@@ -35,6 +35,7 @@ function handleRequest(e, ctx) {
   try {
     fn({ state, busEvent: e, io })
   } catch (err) {
+    console.warn('Failed executing command file: ' + file, err)
     e.res.status(500).send({
       message: 'Failed to execute command',
       file

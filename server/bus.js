@@ -89,8 +89,11 @@ function parseArgument(arg, property) {
   }
 }
 
-const curryValidate = (instanceOf, typeOf, validate) => raw =>
-  raw instanceof instanceOf || typeof raw === typeOf || validate(raw)
+const curryValidate = (instanceOf, typeOf, validate) => raw => {
+  // console.log({raw, instanceOf, typeOf})
+  return raw instanceof instanceOf || typeof raw === typeOf || validate(raw)
+}
+  
 
 // ewww but works for now
 function convertDotNetType(type) {
@@ -104,7 +107,7 @@ function convertDotNetType(type) {
       return {
         type: 'date',
         parse: raw => new Date(raw),
-        validate: validator.isISO8601
+        validate: curryValidate(Date, 'date', validator.isISO8601)
       }
     case 'int32':
       return {
@@ -133,7 +136,7 @@ function convertDotNetType(type) {
       }
     default:
       console.log(`Unexpected .NET type to convert: ${type}`)
-      return { type, parse: noop, validate: validator.isISO8601 }
+      return { type, parse: noop, validate: noop }
   }
 }
 

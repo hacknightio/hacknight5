@@ -1,10 +1,11 @@
 module.exports = ({ state, busEvent, io }) => {
   const { req, res } = busEvent
-  console.log({req, res})
-  io.emit('MESSAGE', { emitting: true })
+  const { body: { on } } = req
 
+  io.emit('MESSAGE', { emitting: true })
+  console.log({ on })
   res.send({
-    blinking: true,
+    on,
     state
   })
 }

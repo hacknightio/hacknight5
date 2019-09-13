@@ -1,3 +1,4 @@
+
 {
 	"info": {
 		"_postman_id": "56445443-0be3-4334-86d4-a9a0112e1b5a",
@@ -135,11 +136,11 @@
 							"raw": "{\n\t\"red\": 255,\n\t\"green\": 255,\n\t\"blue\": 255\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/led",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/led",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"led"
@@ -165,11 +166,11 @@
 							"raw": "{\n\t\"fileName\": \"your-filename-here.ext\",\n\t\"timeoutSeconds\": 1.23456,\n\t\"alpha\": 0.12345\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/images/display",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/images/display",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"images",
@@ -196,11 +197,11 @@
 							"raw": "{\n\t\"fileName\": \"file name here (either this or AssetId must be supplied)\",\n\t\"volume\": 100\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/audio/play",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/audio/play",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"audio",
@@ -227,11 +228,11 @@
 							"raw": "{\n\t\"on\": false\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/flashlight",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/flashlight",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"flashlight"
@@ -262,11 +263,11 @@
 							"raw": "{\n\t\"leftArmPosition\": -90,\n\t\"rightArmPosition\": 90,\n\t\"leftArmVelocity\": 50,\n\t\"rightArmVelocity\": 50\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/arms/set",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/arms/set",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"arms",
@@ -293,11 +294,11 @@
 							"raw": "{\n\t\"LinearVelocity\": -99.99999,\n\t\"AngularVelocity\": -99.99999\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/drive",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/drive",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"drive"
@@ -389,11 +390,11 @@
 							"raw": "{\n\t\"Pitch\": -99.99999,\n\t\"Roll\": -99.99999,\n\t\"Yaw\": -99.9999,\n\t\"Velocity\": 99.9999,\n\t\"Units\": \"degrees\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/blink",
+							"raw": "{{misty-domain}}:{{misty-port}}/blink",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"blink"
 							]
@@ -468,11 +469,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/slam/streaming/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/slam/streaming/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"slam",
@@ -489,11 +490,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/slam/streaming/stop",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/slam/streaming/stop",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"slam",
@@ -608,11 +609,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/faces/training/cancel",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/faces/training/cancel",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"faces",
@@ -650,11 +651,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/faces/detection/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/faces/detection/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"faces",
@@ -671,11 +672,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/video/record/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/video/record/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"video",
@@ -692,11 +693,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/video/record/stop",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/video/record/stop",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"video",
@@ -724,11 +725,11 @@
 							"raw": "{\n\t\"FaceId\": \"A unique string of 30 characters or less\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/faces/training/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/faces/training/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"faces",
@@ -752,11 +753,11 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/faces/recognition/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/faces/recognition/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"faces",
@@ -784,11 +785,11 @@
 							"raw": "{\n\t\"FileName\": \"This parameter must include a .wav file type extension at the end of the string\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3000/api/audio/record/start",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/audio/record/start",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"audio",
@@ -812,11 +813,11 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/faces/detection/stop",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/faces/detection/stop",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"faces",
@@ -847,11 +848,11 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3000/api/cameras/rgb?base64=false&width=1920&height=1080&displayOnScreen=false&overwriteExisting=false",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/cameras/rgb?base64=false&width=1920&height=1080&displayOnScreen=false&overwriteExisting=false",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"cameras",
@@ -1111,11 +1112,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/logs?",
+							"raw": "{{misty-domain}}:{{misty-port}}/api/logs?",
 							"host": [
-								"localhost"
+								"{{misty-domain}}"
 							],
-							"port": "3000",
+							"port": "{{misty-port}}",
 							"path": [
 								"api",
 								"logs"
@@ -1139,11 +1140,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/",
+					"raw": "{{misty-domain}}:{{misty-port}}/",
 					"host": [
-						"localhost"
+						"{{misty-domain}}"
 					],
-					"port": "3000",
+					"port": "{{misty-port}}",
 					"path": [
 						""
 					]

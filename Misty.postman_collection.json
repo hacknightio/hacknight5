@@ -132,16 +132,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Red\": 255,\n\t\"Green\": 255,\n\t\"Blue\": 255\n}"
+							"raw": "{\n\t\"red\": 255,\n\t\"green\": 255,\n\t\"blue\": 255\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/led",
-							"protocol": "http",
+							"raw": "localhost:3000/api/led",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"led"
@@ -164,16 +162,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Filename\": \"your-filename-here.ext\",\n\t\"TimeoutSeconds\": 1.23456,\n\t\"Alpha\": 0.12345\n}"
+							"raw": "{\n\t\"fileName\": \"your-filename-here.ext\",\n\t\"timeoutSeconds\": 1.23456,\n\t\"alpha\": 0.12345\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/images/display",
-							"protocol": "http",
+							"raw": "localhost:3000/api/images/display",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"images",
@@ -184,7 +180,7 @@
 					"response": []
 				},
 				{
-					"name": "PlayAudio",
+					"name": "PlayAudioClip",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -197,20 +193,48 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"AssetId\": \"string Id here (either this or FileName must be supplied)\",\n\t\"FileName\": \"file name herer (either this or AssetId must be supplied)\",\n\t\"Volume\": 100\n}"
+							"raw": "{\n\t\"fileName\": \"file name here (either this or AssetId must be supplied)\",\n\t\"volume\": 100\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/audio/play",
-							"protocol": "http",
+							"raw": "localhost:3000/api/audio/play",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"audio",
 								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetFlashlight",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"on\": false\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/flashlight",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"flashlight"
 							]
 						}
 					},
@@ -235,16 +259,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"LeftArmPosition\": -90,\n\t\"RightArmPosition\": -90\n}"
+							"raw": "{\n\t\"leftArmPosition\": -90,\n\t\"rightArmPosition\": 90,\n\t\"leftArmVelocity\": 50,\n\t\"rightArmVelocity\": 50\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/arms/set",
-							"protocol": "http",
+							"raw": "localhost:3000/api/arms/set",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"arms",
@@ -271,13 +293,11 @@
 							"raw": "{\n\t\"LinearVelocity\": -99.99999,\n\t\"AngularVelocity\": -99.99999\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/drive",
-							"protocol": "http",
+							"raw": "localhost:3000/api/drive",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"drive"
@@ -369,16 +389,13 @@
 							"raw": "{\n\t\"Pitch\": -99.99999,\n\t\"Roll\": -99.99999,\n\t\"Yaw\": -99.9999,\n\t\"Velocity\": 99.9999,\n\t\"Units\": \"degrees\"\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/head",
-							"protocol": "http",
+							"raw": "localhost:3000/blink",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
-								"api",
-								"head"
+								"blink"
 							]
 						}
 					},
@@ -451,13 +468,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/slam/streaming/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/slam/streaming/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"slam",
@@ -474,13 +489,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/slam/streaming/stop",
-							"protocol": "http",
+							"raw": "localhost:3000/api/slam/streaming/stop",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"slam",
@@ -595,13 +608,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/faces/training/cancel",
-							"protocol": "http",
+							"raw": "localhost:3000/api/faces/training/cancel",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"faces",
@@ -639,13 +650,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/faces/detection/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/faces/detection/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"faces",
@@ -662,13 +671,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/video/record/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/video/record/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"video",
@@ -685,13 +692,11 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/video/record/stop",
-							"protocol": "http",
+							"raw": "localhost:3000/api/video/record/stop",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"video",
@@ -719,13 +724,11 @@
 							"raw": "{\n\t\"FaceId\": \"A unique string of 30 characters or less\"\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/faces/training/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/faces/training/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"faces",
@@ -749,13 +752,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/faces/recognition/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/faces/recognition/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"faces",
@@ -783,13 +784,11 @@
 							"raw": "{\n\t\"FileName\": \"This parameter must include a .wav file type extension at the end of the string\"\n}"
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/audio/record/start",
-							"protocol": "http",
+							"raw": "localhost:3000/api/audio/record/start",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"audio",
@@ -813,13 +812,11 @@
 							}
 						],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/faces/detection/stop",
-							"protocol": "http",
+							"raw": "localhost:3000/api/faces/detection/stop",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"faces",
@@ -850,13 +847,11 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://misty.ngrok.io/api/cameras/rgb?Base64=&FileName&Width&Height&DisplayOnScreen&OverwriteExisting",
-							"protocol": "http",
+							"raw": "localhost:3000/api/cameras/rgb?base64=false&width=1920&height=1080&displayOnScreen=false&overwriteExisting=false",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"cameras",
@@ -864,33 +859,34 @@
 							],
 							"query": [
 								{
-									"key": "Base64",
-									"value": "",
+									"key": "base64",
+									"value": "false",
 									"description": "(boolean) - Sending a request with true returns the image data as a downloadable Base64 string, while sending a request of false displays the photo in your browser or REST client immediately after it is taken. Default is true."
 								},
 								{
 									"key": "FileName",
-									"value": "",
-									"description": "(string) - Optional. The filename to assign to the image file for the captured photo. Note that if you do not specify a filename, Misty does not save the photo to her local storage."
+									"value": null,
+									"description": "(string) - Optional. The filename to assign to the image file for the captured photo. Note that if you do not specify a filename, Misty does not save the photo to her local storage.",
+									"disabled": true
 								},
 								{
-									"key": "Width",
-									"value": "",
+									"key": "width",
+									"value": "1920",
 									"description": "(integer) - Optional. A whole number greater than 0 specifying the desired image width (in pixels). Important: To reduce the size of a photo you must supply values for both Width and Height. Note that if you supply disproportionate values for Width and Height, the system uses the proportionately smaller of the two values to resize the image."
 								},
 								{
-									"key": "Height",
-									"value": "",
+									"key": "height",
+									"value": "1080",
 									"description": "(integer) - Optional. A whole number greater than 0 specifying the desired image height (in pixels). Important: To reduce the size of a photo you must supply values for both Width and Height. Note that if you supply disproportionate values for Width and Height, the system uses the proportionately smaller of the two values to resize the image."
 								},
 								{
-									"key": "DisplayOnScreen",
-									"value": "",
+									"key": "displayOnScreen",
+									"value": "false",
 									"description": "(boolean) - Optional. If true and a FileName is provided, displays the captured photo on Misty’s screen. If false or no FileName value is provided, does nothing."
 								},
 								{
-									"key": "OverwriteExisting",
-									"value": "",
+									"key": "overwriteExisting",
+									"value": "false",
 									"description": "(boolean) - Optional. Indicates whether Misty should overwrite an image with the same filename as the captured photo if one exists on her local storage. Passing in true overwrites a file with the same name. Passing in false prevents an existing file with the same name from being overwritten. In the case that OverwriteExisting is set to false and a photo already exists with the same filename as the newly captured photo, the new photo is not saved to Misty. Defaults to false."
 								}
 							]
@@ -1115,13 +1111,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://misty.ngrok.io/api/logs?date",
-							"protocol": "http",
+							"raw": "localhost:3000/api/logs?",
 							"host": [
-								"misty",
-								"ngrok",
-								"io"
+								"localhost"
 							],
+							"port": "3000",
 							"path": [
 								"api",
 								"logs"
@@ -1129,8 +1123,8 @@
 							"query": [
 								{
 									"key": "date",
-									"value": "",
-									"description": "(string) - Optional. A date within the last 7 days. Dates must be formatted as: MonthName/Date/FourDigitYear or FourDigitYear/MonthNumber/Date"
+									"value": null,
+									"disabled": true
 								}
 							]
 						}

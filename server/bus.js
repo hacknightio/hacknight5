@@ -41,7 +41,7 @@ function validateRequest(req, command, expectedMethod) {
   }
 
   let args = {}
-  if( method === 'GET' ){
+  if (method === 'GET') {
     args = query
   } else {
     Object.keys(arguments).forEach(key => {
@@ -94,10 +94,9 @@ function parseArgument(arg, property) {
 }
 
 const curryValidate = (instanceOf, typeOf, validate) => raw => {
-  console.log({raw, instanceOf, typeOf})
+  // console.log({raw, instanceOf, typeOf})
   return raw instanceof instanceOf || typeof raw === typeOf || validate(raw)
 }
-  
 
 // ewww but works for now
 function convertDotNetType(type) {

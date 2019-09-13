@@ -29,9 +29,9 @@ io.on('connection', function(socket) {
 })
 
 dispatcher.bind({ io, bus, state, defaults: defaultState })
-state.on('change', s => {
+state.on('change', () => {
   io.emit('MESSAGE', {
     event: 'change',
-    state: s
+    state
   })
 })

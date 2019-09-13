@@ -25,7 +25,7 @@ export default {
   mounted () {
     this.socket.on('MESSAGE', (data) => {
       if (typeof data === 'object') {
-        // console.log('Data received \n' + JSON.stringify(data, null, 4), data)
+        console.log('Data received \n' + JSON.stringify(data, null, 4), data)
 
         if (data.event === 'change') {
           this.state = data.state

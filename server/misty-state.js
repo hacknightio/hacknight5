@@ -14,6 +14,7 @@ const defaultState = {
     timeoutId: null
   },
   arms: {
+    // position: 0 = straight, -29 = up by face, 90 = straight down
     timeoutId: null,
     left: {
       position: 0

@@ -10,32 +10,43 @@ module.exports = ctx => {
 
   // maybe slowly do it to simulate delays?
 
-  const { leftArmPosition, rightArmPosition } = args
+  let { leftArmPosition: desiredLeft, rightArmPosition: desiredRight } = args
+
+  desiredLeft = Math.min(desiredLeft, 90)
+  desiredLeft = Math.max(desiredLeft, -29)
+
+  desiredRight = Math.min(desiredRight, 90)
+  desiredRight = Math.max(desiredRight, -29)
+  // console.log('starting', {
+  //   desiredLeft,
+  //   desiredRight
+  // })
 
   // let itr = 0
   let timeoutId
   timeoutId = timers.interval(() => {
     // console.log({ args, current: state.arms })
 
-    const left = normalize(state.arms.left.position, leftArmPosition)
-    const right = normalize(state.arms.right.position, rightArmPosition)
-
-    const nl = state.arms.left.position + left
-    const nr = state.arms.right.position + right
-
     const cl = state.arms.left
     const cr = state.arms.right
+
+    const left = normalize(cl.position, desiredLeft)
+    const right = normalize(cr.position, desiredRight)
+
+    const nl = cl.position + left
+    const nr = cr.position + right
 
     // console.log({ nl, nr, cr, cl, left, right })
     if (left === 0 && right === 0) {
       timers.clear(timeoutId)
       timeoutId = null
-    }
-    state.arms = {
-      ...state.arms,
-      timeoutId,
-      left: left === 0 ? cl : { ...cl, position: nl },
-      right: right === 0 ? cr : { ...cr, position: nr }
+    } else {
+      state.arms = {
+        ...state.arms,
+        timeoutId,
+        left: { ...cl, position: nl },
+        right: { ...cr, position: nr }
+      }
     }
 
     // console.log('set', itr++)

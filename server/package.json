@@ -19,7 +19,7 @@
   "homepage": "https://github.com/hacknightio/hacknight5#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "validator": "11.1.0",
     "ws": "^7.1.2"
   },
